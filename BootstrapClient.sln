@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ADB3B795-2C43-4F81-B072-4DC3B66FDFD2}"
+	ProjectSection(SolutionItems) = preProject
+		bootstrap.min.css = bootstrap.min.css
+		bootstrap.min.js = bootstrap.min.js
+		div-center.html = div-center.html
+		Index.html = Index.html
+		jquery-1.10.2.min.js = jquery-1.10.2.min.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
