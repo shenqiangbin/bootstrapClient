@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>第一个模板</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+		<!--[if lt IE 9]>
+      		<script src="http://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+      		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+			body{
+				padding-top:30px;
+			}
+
+			.col-md-6{
+				padding-left: 0px;
+			}
+
+			.progress-container h4{
+				font-size: 16px;
+			}
+
+			.progress-panel{
+
+			}
+
+		</style>		
+
+	</head>
+	
+	<body>
+		<div class="container">
+			<h4><strong>进度表</strong></h4>
+			<div class='progress-panel'>
+				<div class='col-md-6 progress-container'>
+					<h4>完成进度</h4>
+					<div class="progress">
+						<div id='complete-progress' class="progress-bar" role='progressbar' aria-valuemin='0' aria-valuemax='100' style='min-width: 2em;width:0%'>0%</div>
+					</div>
+				</div>
+				<div class='col-md-6 progress-container'>
+					<h4>提交进度</h4>
+					<div class="progress">
+						<div id='commit-progress' class="progress-bar" role='progressbar' aria-valuemin='0' aria-valuemax='100' style='min-width: 2em;width:40%'>40%</div>
+					</div>	
+				</div>
+		
+			
+				<div class='col-md-6 progress-container'>
+					<h4>作业进度</h4>
+					<div class="progress">
+						<div id='work-progress' class="progress-bar" role='progressbar' aria-valuemin='0' aria-valuemax='100' style='min-width: 2em;width:60%'>60%</div>
+					</div>		
+				</div>
+				<div class='col-md-6 progress-container'>
+					<h4>学习进度</h4>
+					<div class="progress">
+						<div id='study-progress' class="progress-bar" role='progressbar' aria-valuemin='0' aria-valuemax='100' style='min-width: 2em;width:100%'>100%</div>
+					</div>	
+				</div>					
+			</div>		
+			<div style='margin-top:20px;display:inline-block;'></div>
+			<h4><strong>文件上传</strong></h4>	
+			<div class="contain-fluid">
+				<p style='margin-top:30px;'>
+					<button id='btnUpload' class='btn btn-default'>上传</button>
+				</p>
+				<div id='upload-progress-container' class='col-md-6 hidden'>
+					<div class="progress">
+						<div id='upload-progress' id='study-progress' class="progress-bar" role='progressbar' aria-valuemin='0' aria-valuemax='100' style='min-width: 2em;width:0%'>0%</div>
+					</div>	
+				</div>
+			</div>			
+		</div>
+	</body>
+
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src='js/msg.js'></script>
+</html>
+
+<script type="text/javascript">	
+	$(function(){
+		function setProcessVal(idName,val){
+			var obj = $('#' + idName);
+			var valNum = val + '%';
+			obj.html(valNum);
+			obj.width(valNum);
+		}
+
+		setTimeout(function(){
+			setProcessVal('complete-progress',50);
+		},5000);
+
+		//上传按钮
+		$('#btnUpload').click(function(){
+			var btn = $(this);
+			btn.addClass('disabled').html('上传中...');
+
+			var progressContainer = $('#upload-progress-container');
+			progressContainer.removeClass('hidden');
+
+			var i=0;
+			var id = setInterval(function(){
+				if(i==100){
+					clearInterval(id);
+					btn.removeClass('disabled').html('上传');
+				}				
+				setProcessVal('upload-progress',i);
+				i+=2;
+			},1000);		
+		});
+
+
+
+	});
+</script>
